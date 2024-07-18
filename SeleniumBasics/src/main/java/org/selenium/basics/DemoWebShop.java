@@ -55,10 +55,38 @@ public class DemoWebShop {
 		System.out.println("End of the code");
 		driver.close();
 	}
+	
+	public void verifyRegistrationUsingXpath() {
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demowebshop.tricentis.com/");
+		WebElement registerLink=driver.findElement(By.xpath("//a[@class='ico-register']"));
+		registerLink.click();
+		
+		WebElement gender=driver.findElement(By.xpath("//input[@name='Gender' and @id='gender-male']"));
+		gender.click();
+		WebElement firstName=driver.findElement(By.xpath("//input[contains(@id,'FirstName')]"));
+		firstName.sendKeys("Blessy");
+		WebElement lastName = driver.findElement(By.xpath("//input[contains(@id,'LastName')]"));
+		lastName.sendKeys("Raju");
+		WebElement email=driver.findElement(By.xpath("//input[@name='Email']"));
+		email.sendKeys("blessy1@gmail.com");
+		WebElement password =driver.findElement(By.xpath("//input[@id='Password']"));
+		password.sendKeys("Password@123");
+		WebElement confirmPassword =driver.findElement(By.xpath("//input[@id='ConfirmPassword']"));
+		confirmPassword.sendKeys("Password@123");
+		WebElement register = driver.findElement(By.xpath("//input[@id='register-button']"));
+		register.click();		
+		System.out.println("End of the code");
+		driver.close();
+		
+	}
+	
 
 	public static void main(String[] args) {
 		DemoWebShop demo = new DemoWebShop();
-		demo.verifyUserRegistration();
+		//demo.verifyUserRegistration();
+		demo.verifyRegistrationUsingXpath();
 		//demo.verifyLogin();
 	}
 
