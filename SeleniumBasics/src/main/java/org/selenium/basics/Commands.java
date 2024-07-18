@@ -1,5 +1,8 @@
 package org.selenium.basics;
 
+import java.util.List;
+
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -70,6 +73,56 @@ public class Commands {
 		driver.close();
 		
 	}
+	public void getTotalDropDownValues() {
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demo.guru99.com/test/newtours/register.php");
+		WebElement countryDropDown=driver.findElement(By.xpath("//select[@name='country']"));
+		Select select = new Select(countryDropDown);
+		List<WebElement> dropDownList= select.getOptions();
+		System.out.println("Number of values in dropdown list:"+dropDownList.size());
+		driver.close();
+		
+	}
+	
+	public void verifySimpleAlert() {
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demoqa.com/alerts");
+		WebElement clickMeButton = driver.findElement(By.xpath("//button[@id='alertButton']"));
+		clickMeButton.click();
+		Alert al = driver.switchTo().alert();
+		al.accept();
+		driver.close();
+	}
+	public void verifyConfirmationAlert() {
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demoqa.com/alerts");
+		WebElement clickMeButton = driver.findElement(By.xpath("//button[@id='confirmButton']"));
+		clickMeButton.click();
+		Alert al = driver.switchTo().alert();
+		System.out.println("Alert text displayed:"+al.getText());
+		al.dismiss();
+		WebElement confrimResult =driver.findElement(By.xpath("//span[@id='confirmResult']"));
+		System.out.println("Result after alert: "+confrimResult.getText());
+		driver.close();
+		
+	}
+	
+	public void verifyPromptAlert() {
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demoqa.com/alerts");
+		WebElement clickMeButton = driver.findElement(By.xpath("//button[@id='promtButton']"));
+		clickMeButton.click();
+		Alert al =driver.switchTo().alert();
+		al.sendKeys("Blessy");
+		al.accept();
+		WebElement promptResult =driver.findElement(By.xpath("//span[@id='promptResult']"));
+		System.out.println("Prompt result after alert: "+promptResult.getText());
+		driver.close();
+	}
 
 	public static void main(String[] args) {
 		Commands cmdObj = new Commands();
@@ -77,7 +130,11 @@ public class Commands {
 		//cmdObj.verifyIsSelected();
 		//cmdObj.verifyIsEnabled();
 		//cmdObj.verifyIsDisplayed();
-		cmdObj.verifyValuesFromDropdown();
+		//cmdObj.verifyValuesFromDropdown();
+		//cmdObj.getTotalDropDownValues();
+		//cmdObj.verifySimpleAlert();
+		//cmdObj.verifyConfirmationAlert();
+		cmdObj.verifyPromptAlert();
 
 	}
 

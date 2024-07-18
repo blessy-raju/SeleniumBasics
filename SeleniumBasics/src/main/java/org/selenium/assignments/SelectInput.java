@@ -37,6 +37,8 @@ public class SelectInput {
 		colorDropDown.selectByIndex(0);
 		currentSelectedColor=colorDropDown.getFirstSelectedOption();
 		System.out.println("First selected color:"+currentSelectedColor.getText());
+		WebElement getAllButton=driver.findElement(By.xpath("//button[@id='button-all']"));
+		getAllButton.click();
 		//driver.close();
 	}
 	
