@@ -100,7 +100,6 @@ public class Commands {
 	}
 	
 	
-	
 	public void verifySimpleAlert() {
 		WebDriver driver=new ChromeDriver();
 		driver.manage().window().maximize();
@@ -172,6 +171,30 @@ public class Commands {
 		act.moveToElement(mouseHoverButton).moveToElement(subListMenu).moveToElement(subListMenu2).click().build().perform();
 		
 	}
+	public void verifyDragAndDrop() {
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://selenium.qabible.in/drag-drop.php");
+		WebElement dragN1Button = driver.findElement(By.xpath("//span[text()='Draggable n°1']"));
+		WebElement dropZoneSection =driver.findElement(By.xpath("//div[@id='mydropzone']"));
+		Actions act = new Actions(driver);
+		act.moveToElement(dragN1Button).build().perform();
+		act.click(dragN1Button).build().perform();
+		act.contextClick(dragN1Button).build().perform();
+		act.dragAndDrop(dragN1Button, dropZoneSection).build().perform();
+		driver.close();
+	}
+	
+	public void verifyFrames() {
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demo.guru99.com/test/guru99home/");
+		WebElement frame= driver.findElement(By.xpath("//iframe[@id='a077aa5e']"));
+		driver.switchTo().frame(frame);
+		WebElement image =driver.findElement(By.xpath("//img[@src='Jmeter720.png']"));
+		image.click();
+		driver.quit();
+	}
 
 	public static void main(String[] args) {
 		Commands cmdObj = new Commands();
@@ -187,7 +210,9 @@ public class Commands {
 		//cmdObj.verifyPromptAlert();
 		//cmdObj.verifyRightClick();
 		//cmdObj.verifyDoubleClick();
-		cmdObj.verifyMouseHover();
+		//cmdObj.verifyMouseHover();
+		//cmdObj.verifyDragAndDrop();
+		cmdObj.verifyFrames();
 	}
 
 }
