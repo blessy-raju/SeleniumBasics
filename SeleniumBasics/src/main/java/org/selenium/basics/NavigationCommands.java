@@ -13,6 +13,7 @@ public class NavigationCommands {
 		driver.navigate().refresh();
 		driver.navigate().to("https://www.javatpoint.com/");
 		driver.close();
+	
 
 	}
 
