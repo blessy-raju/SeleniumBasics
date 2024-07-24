@@ -1,6 +1,7 @@
 package org.selenium.basics;
 
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -196,6 +197,32 @@ public class Commands {
 		driver.quit();
 	}
 
+	public void verifyMultipleWindowHandles() {
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://webdriveruniversity.com/");
+		WebElement contactUsLink = driver.findElement(By.xpath("//h1[text()='CONTACT US']"));
+		contactUsLink.click();
+		WebElement loginPortalLink=driver.findElement(By.xpath("//h1[text()='LOGIN PORTAL']"));
+		loginPortalLink.click();
+		String parent = driver.getWindowHandle();
+		System.out.println("Parent Window:"+parent);	//prints the parent window ID
+		
+		Set<String> allWindows=driver.getWindowHandles();	//getWindowHandles() returns all opened tabs in that session(including parent tab)
+		for(String temp:allWindows) {
+			if(!temp.equals(parent)) {
+			System.out.println("Windows:"+temp);
+			driver.switchTo().window(temp); //switch to the new tab to perform any action on that tab
+			System.out.println(driver.getTitle());
+			System.out.println(driver.getCurrentUrl());
+			System.out.println("****************************************************************");
+			}
+		}
+		driver.quit();	
+	}
+	
+	
+
 	public static void main(String[] args) {
 		Commands cmdObj = new Commands();
 		//cmdObj.verifySwagLabsLogin();
@@ -212,7 +239,8 @@ public class Commands {
 		//cmdObj.verifyDoubleClick();
 		//cmdObj.verifyMouseHover();
 		//cmdObj.verifyDragAndDrop();
-		cmdObj.verifyFrames();
+		//cmdObj.verifyFrames();
+		cmdObj.verifyMultipleWindowHandles();
 	}
 
 }
