@@ -227,28 +227,33 @@ public class Commands {
 		driver.get("https://money.rediff.com/indices/nse");
 		WebElement showMoreLink = driver.findElement(By.xpath("//a[@id='showMoreLess']"));
 		showMoreLink.click();
-		//WebElement table = driver.findElement(By.xpath("//table[@id='dataTable']"));
-		//System.out.println(table.getText());
+		
+		WebElement table = driver.findElement(By.xpath("//table[@id='dataTable']"));
+		System.out.println(table.getText());
+		
+		//print first column
 		List<WebElement> indicesColumn = driver.findElements(By.xpath("//table[@id='dataTable']//tbody//tr//td//following-sibling::a"));
 		System.out.println("Indices:");
 		for(int i=0;i<indicesColumn.size();i++) {
 			System.out.println(indicesColumn.get(i).getText());
 		}
 		
-//		WebElement tableRow=driver.findElement(By.xpath("//table[@id='dataTable']/tbody/tr[5]"));	
-//		System.out.println(tableRow.getText());
-//		List<WebElement> rows = table.findElements(By.tagName("tr"));
-//		int rowSize = rows.size();
-//		for(int i=0;i<rowSize;i++) {
-//			List<WebElement> columns = rows.get(i).findElements(By.tagName("td"));
-//			int columnSize = columns.size();
-//			for(int j=0;j<columnSize;j++) {
-//				String cellData = columns.get(j).getText();
-//				if(cellData.equals("NIFTY BANK")) {
-//					System.out.println("Prev Close value is "+columns.get(1).getText());
-//				}
-//			}
-//		}
+		//prints a single row - 5th row here
+		WebElement tableRow=driver.findElement(By.xpath("//table[@id='dataTable']/tbody/tr[5]"));	
+		System.out.println(tableRow.getText());
+		
+		List<WebElement> rows = table.findElements(By.tagName("tr"));
+		int rowSize = rows.size();
+		for(int i=0;i<rowSize;i++) {
+			List<WebElement> columns = rows.get(i).findElements(By.tagName("td"));
+			int columnSize = columns.size();
+			for(int j=0;j<columnSize;j++) {
+				String cellData = columns.get(j).getText();
+				if(cellData.equals("NIFTY BANK")) {
+					System.out.println("Prev Close value is "+columns.get(1).getText());
+				}
+			}
+		}
 		driver.close();
 	}
 	
