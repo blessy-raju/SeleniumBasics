@@ -1,5 +1,8 @@
 package org.selenium.basics;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.Set;
 
@@ -179,13 +182,21 @@ public class Commands {
 		WebElement dragN1Button = driver.findElement(By.xpath("//span[text()='Draggable n°1']"));
 		WebElement dropZoneSection =driver.findElement(By.xpath("//div[@id='mydropzone']"));
 		Actions act = new Actions(driver);
-		act.moveToElement(dragN1Button).build().perform();
-		act.click(dragN1Button).build().perform();
-		act.contextClick(dragN1Button).build().perform();
+//		act.moveToElement(dragN1Button).build().perform();
+//		act.click(dragN1Button).build().perform();
+		//act.contextClick(dragN1Button).build().perform(); //we can either use click or right click method
 		act.dragAndDrop(dragN1Button, dropZoneSection).build().perform();
-		driver.close();
+		//driver.close();
 	}
-	
+	public void verifyDragAndDropUsingOffset() {
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demoqa.com/dragabble");
+		WebElement dragMeButton=driver.findElement(By.id("dragBox"));
+		Actions actions =new Actions(driver);
+		actions.dragAndDropBy(dragMeButton, 150, 100).build().perform();
+		
+	}
 	public void verifyFrames() {
 		WebDriver driver=new ChromeDriver();
 		driver.manage().window().maximize();
@@ -257,9 +268,34 @@ public class Commands {
 		driver.close();
 	}
 	
+	public void verifyFileUpload() {
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demo.guru99.com/test/upload/");
+		WebElement chooseFileButton = driver.findElement(By.xpath("//input[@id='uploadfile_0']"));
+		chooseFileButton.sendKeys("C:\\Users\\Lenovo\\git\\repository\\SeleniumBasics\\src\\main\\resources\\Book1.xlsx");
+		WebElement checkboxButton = driver.findElement(By.id("terms"));
+		checkboxButton.click();
+		WebElement submitFileButton = driver.findElement(By.id("submitbutton"));
+		submitFileButton.click();
+		driver.close();
+	}
 	
+	public void verifyKeyboardEvents() throws AWTException {
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demo.guru99.com/test/upload/");
+		Robot robot = new Robot();
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_T);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyRelease(KeyEvent.VK_T);
+		//driver.get("https://www.google.co.in/");
+		driver.close();
+				
+	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws AWTException {
 		Commands cmdObj = new Commands();
 		//cmdObj.verifySwagLabsLogin();
 		//cmdObj.verifyIsSelected();
@@ -274,10 +310,14 @@ public class Commands {
 		//cmdObj.verifyRightClick();
 		//cmdObj.verifyDoubleClick();
 		//cmdObj.verifyMouseHover();
-		//cmdObj.verifyDragAndDrop();
+		cmdObj.verifyDragAndDrop();
 		//cmdObj.verifyFrames();
 		//cmdObj.verifyMultipleWindowHandles();
-		cmdObj.verifyDynamicWebTable();
+		//cmdObj.verifyDynamicWebTable();
+		//cmdObj.verifyFileUpload();
+		//cmdObj.verifyKeyboardEvents();
+		//cmdObj.verifyDragAndDropUsingOffset();
+		
 	}
 
 }
