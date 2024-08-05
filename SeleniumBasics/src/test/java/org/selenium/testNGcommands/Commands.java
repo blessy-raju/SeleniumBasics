@@ -1,10 +1,19 @@
 package org.selenium.testNGcommands;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+
 import org.automationcore.Base;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -50,6 +59,8 @@ public class Commands extends Base {
 		radioButtonMale.click();
 		isButtonSelected = radioButtonMale.isSelected();
 		Assert.assertTrue(isButtonSelected, "Male is not selected");
+//		Assert.assertFalse(isButtonSelected, "Male is already selected");
+//		System.out.println("End of the code to test soft assert");
 	}
 
 	@Test
@@ -63,6 +74,56 @@ public class Commands extends Base {
 		loginButton.click();
 		WebElement pageHeading = driver.findElement(By.xpath("//div[@class='app_logo']"));
 		Assert.assertEquals(pageHeading.getText(), "Swag Labs", "Login is not successful");
+	}
+
+	@Test
+	public void verifyJavaScriptExecutorSendKeysAndClick() {
+		driver.get("https://demowebshop.tricentis.com/");
+		JavascriptExecutor javascriptexecutor = (JavascriptExecutor) driver; // another way of creating reference
+		javascriptexecutor.executeScript("document.getElementById(\"newsletter-email\").value='test@gmail.com'");
+		javascriptexecutor.executeScript("document.getElementById(\"newsletter-subscribe-button\").click()");
+	}
+
+	@Test
+	public void verifyJavaScriptExecutorScroll() {
+		driver.get("https://demoqa.com/forms");
+		JavascriptExecutor javascriptexecutor = (JavascriptExecutor) driver;
+//		javascriptexecutor.executeScript("window.scrollBy(0,500)");	//scrolls down
+//		javascriptexecutor.executeScript("window.scrollBy(0,-500)");	//scrolls up
+//		javascriptexecutor.executeScript("window.scrollBy(150,0)");	//scrolls right
+//		javascriptexecutor.executeScript("window.scrollBy(-150,0)");	//scrolls left
+		javascriptexecutor.executeScript("window.scrollTo(0,document.body.scrollHeight)"); // scroll down to end
+		javascriptexecutor.executeScript("window.scrollTo(document.body.scrollHeight,0)"); // scrolls left to the end
+
+	}
+
+	@Test
+	public void verifyFileUploadUsingRobotClass() throws AWTException {
+
+		driver.get("https://demo.guru99.com/test/upload/");		
+		WebElement uploadFile = driver.findElement(By.xpath("//input[@id='uploadfile_0']"));
+		Actions actions = new Actions(driver);
+		actions.moveToElement(uploadFile).click().perform();
+
+		StringSelection strSelection = new StringSelection(
+				"C:\\Users\\Lenovo\\git\\repository\\SeleniumBasics\\src\\main\\resources\\Book1.xlsx");
+		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+		clipboard.setContents(strSelection, null);
+		
+		Robot robot = new Robot();
+		robot.delay(300);
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_V);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyRelease(KeyEvent.VK_V);
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+		
+		WebElement checkboxButton = driver.findElement(By.id("terms"));
+		checkboxButton.click();
+		WebElement submitFileButton = driver.findElement(By.id("submitbutton"));
+		submitFileButton.click();
+		
 	}
 
 }
