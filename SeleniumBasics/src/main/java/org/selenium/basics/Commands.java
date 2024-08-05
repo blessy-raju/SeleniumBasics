@@ -313,7 +313,7 @@ public class Commands {
 	public void verifyFileUploadUsingRobotClass() throws AWTException {
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://demo.guru99.com/test/upload/");		
+		driver.get("https://demo.guru99.com/test/upload/");
 		WebElement uploadFile = driver.findElement(By.xpath("//input[@id='uploadfile_0']"));
 		Actions actions = new Actions(driver);
 		actions.moveToElement(uploadFile).click().perform();
@@ -322,7 +322,7 @@ public class Commands {
 				"C:\\Users\\Lenovo\\git\\repository\\SeleniumBasics\\src\\main\\resources\\Book1.xlsx");
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 		clipboard.setContents(strSelection, null);
-		
+
 		Robot robot = new Robot();
 		robot.delay(300);
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -331,12 +331,12 @@ public class Commands {
 		robot.keyRelease(KeyEvent.VK_V);
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
-		
+
 		WebElement checkboxButton = driver.findElement(By.id("terms"));
 		checkboxButton.click();
 		WebElement submitFileButton = driver.findElement(By.id("submitbutton"));
 		submitFileButton.click();
-		driver.close();
+		// driver.close();
 	}
 
 	public static void main(String[] args) throws AWTException {
@@ -354,7 +354,7 @@ public class Commands {
 		// cmdObj.verifyRightClick();
 		// cmdObj.verifyDoubleClick();
 		// cmdObj.verifyMouseHover();
-		//cmdObj.verifyDragAndDrop();
+		// cmdObj.verifyDragAndDrop();
 		// cmdObj.verifyFrames();
 		// cmdObj.verifyMultipleWindowHandles();
 		// cmdObj.verifyDynamicWebTable();
