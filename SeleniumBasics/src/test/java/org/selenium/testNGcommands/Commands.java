@@ -6,14 +6,20 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.time.Duration;
+import java.util.NoSuchElementException;
 
 import org.automationcore.Base;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -23,7 +29,6 @@ public class Commands extends Base {
 		driver.get("https://demowebshop.tricentis.com/");
 		String actualTitle = driver.getTitle();
 		String expectedTitle = "Demo Web Shop";
-		// System.out.println("Title:" + title);
 		Assert.assertEquals(actualTitle, expectedTitle, "Title Mismatch");
 
 	}
@@ -100,16 +105,22 @@ public class Commands extends Base {
 	@Test
 	public void verifyFileUploadUsingRobotClass() throws AWTException {
 
-		driver.get("https://demo.guru99.com/test/upload/");		
-		WebElement uploadFile = driver.findElement(By.xpath("//input[@id='uploadfile_0']"));
+		driver.get("https://demo.guru99.com/test/upload/");
+		WebElement uploadFile = driver.findElement(By.xpath("//input[@id='uploadfile_0']")); // since the button is an
+																								// <input> tag, click()
+																								// doesn't work. So use
+																								// actions.moveToElement(uploadFile).click().perform()
 		Actions actions = new Actions(driver);
 		actions.moveToElement(uploadFile).click().perform();
 
 		StringSelection strSelection = new StringSelection(
 				"C:\\Users\\Lenovo\\git\\repository\\SeleniumBasics\\src\\main\\resources\\Book1.xlsx");
-		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-		clipboard.setContents(strSelection, null);
-		
+		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard(); // class that implements a mechanism to
+																				// transfer data using cut/copy/paste
+																				// operations
+		clipboard.setContents(strSelection, null); // Sets the current contents of the clipboard to the specified
+													// transferable object
+
 		Robot robot = new Robot();
 		robot.delay(300);
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -118,12 +129,42 @@ public class Commands extends Base {
 		robot.keyRelease(KeyEvent.VK_V);
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
-		
+
 		WebElement checkboxButton = driver.findElement(By.id("terms"));
 		checkboxButton.click();
 		WebElement submitFileButton = driver.findElement(By.id("submitbutton"));
 		submitFileButton.click();
-		
+
+	}
+	
+	@Test
+	public void verifyWaitCommands() {
+		driver.get("https://demoqa.com/alerts");
+		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
+		JavascriptExecutor javascriptexecutor = (JavascriptExecutor) driver;
+		javascriptexecutor.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+		WebElement clickMeButton = driver.findElement(By.id("timerAlertButton"));
+		clickMeButton.click();
+		wait.until(ExpectedConditions.alertIsPresent());
+		Alert alert=driver.switchTo().alert();
+		alert.accept();
+	}
+	
+	@Test
+	public void verifyFluentWait() {
+		driver.get("https://demoqa.com/alerts");
+		JavascriptExecutor javascriptexecutor = (JavascriptExecutor) driver;
+		javascriptexecutor.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+		WebElement clickMeButton = driver.findElement(By.id("timerAlertButton"));
+		FluentWait fluentWait=new FluentWait(driver);
+		fluentWait.withTimeout(Duration.ofSeconds(10));
+		fluentWait.pollingEvery(Duration.ofSeconds(2));
+		fluentWait.ignoring(NoSuchElementException.class);
+		clickMeButton.click();
+		fluentWait.until(ExpectedConditions.alertIsPresent());
+		Alert alert=driver.switchTo().alert();
+		alert.accept();
 	}
 
 }
