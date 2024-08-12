@@ -41,7 +41,7 @@ public class Base {
 		if(result.getStatus() == ITestResult.FAILURE) {	//checks the status of the TC with the constant variable ITestResult.FAILURE
 			takeScreenshot(result);
 		}
-		//driver.close();
+		driver.close();
 	}
 	
 	public void takeScreenshot(ITestResult result) throws IOException {

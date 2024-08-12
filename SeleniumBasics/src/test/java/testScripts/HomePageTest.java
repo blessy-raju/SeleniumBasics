@@ -1,5 +1,6 @@
 package testScripts;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.automationcore.Base;
@@ -8,24 +9,28 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import utilities.ExcelUtility;
+
 public class HomePageTest extends Base{
 	@Test
-	public void verifyHomePageTitle() {
+	public void verifyHomePageTitle() throws IOException {
 		driver.get("https://demowebshop.tricentis.com/");
 		String actualTitle = driver.getTitle();
-		String expectedTitle = "Demo Web Shop";
+		String expectedTitle = ExcelUtility.getStringData(0, 0,"HomePage");
 		Assert.assertEquals(actualTitle, expectedTitle, "Title Mismatch");
 	}
 	
 	@Test
-	public void verifyCommunityPoolSelection() {
+	public void verifyCommunityPoolSelection() throws IOException {
 		driver.get("https://demowebshop.tricentis.com/");
 		List<WebElement> pollList = driver.findElements(By.xpath("//li[@class='answer']"));
+		String poll =ExcelUtility.getStringData(2, 0,"HomePage");
+		boolean isPoorSelected;
 		for(int i=0;i<pollList.size();i++) {
-			if(pollList.get(i).getText().equals("Poor")) {
+			if(pollList.get(i).getText().equals(poll)) {
 				WebElement poorRadioButton = pollList.get(i).findElement(By.tagName("input"));
 				poorRadioButton.click();
-				boolean isPoorSelected = poorRadioButton.isSelected();
+				isPoorSelected = poorRadioButton.isSelected();
 				Assert.assertTrue(isPoorSelected, "Poor is not selected");
 				break;
 			}
