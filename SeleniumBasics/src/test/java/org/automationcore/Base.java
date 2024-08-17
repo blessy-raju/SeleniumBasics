@@ -13,6 +13,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 
 public class Base {
 
@@ -31,12 +32,13 @@ public class Base {
 		driver.manage().window().maximize();
 	}
 
-	@BeforeMethod
-	public void setBrowser() {
-		initializeBrowser("Chrome");
+	@BeforeMethod(alwaysRun = true)
+	@Parameters("browser")
+	public void setBrowser(String browserName) {
+		initializeBrowser(browserName);
 	}
 	
-	@AfterMethod
+	@AfterMethod(alwaysRun = true)
 	public void closeBrowser(ITestResult result) throws IOException {
 		if(result.getStatus() == ITestResult.FAILURE) {	//checks the status of the TC with the constant variable ITestResult.FAILURE
 			takeScreenshot(result);
