@@ -28,7 +28,7 @@ public class RegisterPageTest extends Base {
 
 		String fName = RandomDataUtility.getFirstName();
 		String lName = RandomDataUtility.getLastName();
-		String emailId = fName + "." + fName + "@yahoo.com";
+		String emailId = fName + "." + lName + "@yahoo.com";
 		String pwd = fName + "@" + lName;
 		WebElement genderRadioButton;
 		if (gender.equals("Male")) {

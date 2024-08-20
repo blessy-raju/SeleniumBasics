@@ -13,7 +13,8 @@ import listeners.RetryAnalyzer;
 import utilities.ExcelUtility;
 
 public class HomePageTest extends Base {
-	@Test(retryAnalyzer =RetryAnalyzer.class)
+	//@Test(retryAnalyzer =RetryAnalyzer.class)
+	@Test
 	public void verifyHomePageTitle() {
 		driver.get("https://demowebshop.tricentis.com/");
 		String actualTitle = driver.getTitle();
