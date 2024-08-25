@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testScripts.HomePageTest">
+      <class name="org.selenium.testNGcommands.Commands">
         <methods>
           <include name="closeBrowser"/>
-          <include name="verifyHomePageTitle"/>
+          <include name="verifyQaLegends"/>
           <include name="setBrowser"/>
         </methods>
-      </class> <!-- testScripts.HomePageTest -->
+      </class> <!-- org.selenium.testNGcommands.Commands -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

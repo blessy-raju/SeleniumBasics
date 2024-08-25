@@ -14,7 +14,7 @@ import utilities.ExcelUtility;
 
 public class HomePageTest extends Base {
 	//@Test(retryAnalyzer =RetryAnalyzer.class)
-	@Test
+	@Test(groups="Sanity")
 	public void verifyHomePageTitle() {
 		driver.get("https://demowebshop.tricentis.com/");
 		String actualTitle = driver.getTitle();
@@ -22,7 +22,7 @@ public class HomePageTest extends Base {
 		Assert.assertEquals(actualTitle, expectedTitle, "Title Mismatch");
 	}
 
-	@Test
+	@Test(groups="Smoke")
 	public void verifyCommunityPoolSelection() {
 		driver.get("https://demowebshop.tricentis.com/");
 		List<WebElement> pollList = driver.findElements(By.xpath("//li[@class='answer']"));

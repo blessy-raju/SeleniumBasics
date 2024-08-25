@@ -1,40 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results retried="3" ignored="3" total="7" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="0" skipped="1">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-08-19T20:04:29 IST" name="Suite" finished-at="2024-08-19T20:04:49 IST" duration-ms="19876">
+  <suite started-at="2024-08-24T08:51:19 IST" name="Default suite" finished-at="2024-08-24T08:51:19 IST" duration-ms="82">
     <groups>
     </groups>
-    <test started-at="2024-08-19T20:04:29 IST" name="Test" finished-at="2024-08-19T20:04:49 IST" duration-ms="19876">
-      <class name="testScripts.HomePageTest">
-        <test-method is-config="true" signature="setBrowser(java.lang.String)[pri:0, instance:testScripts.HomePageTest@3c19aaa5]" started-at="2024-08-19T20:04:29 IST" name="setBrowser" finished-at="2024-08-19T20:04:31 IST" duration-ms="1886" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Chrome]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setBrowser -->
-        <test-method retried="true" signature="verifyHomePageTitle()[pri:0, instance:testScripts.HomePageTest@3c19aaa5]" started-at="2024-08-19T20:04:31 IST" name="verifyHomePageTitle" finished-at="2024-08-19T20:04:35 IST" duration-ms="4012" status="SKIP">
-          <exception class="java.lang.AssertionError">
+    <test started-at="2024-08-24T08:51:19 IST" name="Default test" finished-at="2024-08-24T08:51:19 IST" duration-ms="82">
+      <class name="org.selenium.testNGcommands.Commands">
+        <test-method is-config="true" signature="setBrowser(java.lang.String)[pri:0, instance:org.selenium.testNGcommands.Commands@6f1de4c7]" started-at="2024-08-24T08:51:19 IST" name="setBrowser" finished-at="1970-01-01T05:30:00 IST" duration-ms="-1724469679746" status="FAIL">
+          <exception class="org.testng.TestNGException">
             <message>
-              <![CDATA[Title Mismatch expected [Demo Web shop] but found [Demo Web Shop]]]>
+              <![CDATA[
+Parameter 'browser' is required by BeforeMethod on method setBrowser but has not been marked @Optional or defined
+in C:\Users\Lenovo\AppData\Local\Temp\testng-eclipse-1838385650\testng-customsuite.xml]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Title Mismatch expected [Demo Web shop] but found [Demo Web Shop]
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1578)
-at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-at org.testng.Assert.assertEquals(Assert.java:132)
-at org.testng.Assert.assertEquals(Assert.java:656)
-at testScripts.HomePageTest.verifyHomePageTitle(HomePageTest.java:22)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+              <![CDATA[org.testng.TestNGException: 
+Parameter 'browser' is required by BeforeMethod on method setBrowser but has not been marked @Optional or defined
+in C:\Users\Lenovo\AppData\Local\Temp\testng-eclipse-1838385650\testng-customsuite.xml
+at org.testng.internal.Parameters.createParams(Parameters.java:267)
+at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:355)
+at org.testng.internal.Parameters.createParameters(Parameters.java:684)
+at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:166)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:306)
+at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:810)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:577)
 at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
 at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
 at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
@@ -59,51 +49,30 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyHomePageTitle -->
-        <test-method is-config="true" signature="closeBrowser(org.testng.ITestResult)[pri:0, instance:testScripts.HomePageTest@3c19aaa5]" started-at="2024-08-19T20:04:35 IST" name="closeBrowser" finished-at="2024-08-19T20:04:35 IST" duration-ms="204" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyHomePageTitle status=SKIP method=HomePageTest.verifyHomePageTitle()[pri:0, instance:testScripts.HomePageTest@3c19aaa5] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closeBrowser -->
-        <test-method is-config="true" signature="setBrowser(java.lang.String)[pri:0, instance:testScripts.HomePageTest@3c19aaa5]" started-at="2024-08-19T20:04:35 IST" name="setBrowser" finished-at="2024-08-19T20:04:36 IST" duration-ms="1124" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Chrome]]>
-              </value>
-            </param>
-          </params>
+          </exception> <!-- org.testng.TestNGException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setBrowser -->
-        <test-method retried="true" signature="verifyHomePageTitle()[pri:0, instance:testScripts.HomePageTest@3c19aaa5]" started-at="2024-08-19T20:04:36 IST" name="verifyHomePageTitle" finished-at="2024-08-19T20:04:39 IST" duration-ms="3199" status="SKIP">
-          <exception class="java.lang.AssertionError">
+        <test-method signature="verifyQaLegends()[pri:0, instance:org.selenium.testNGcommands.Commands@6f1de4c7]" started-at="2024-08-24T08:51:19 IST" name="verifyQaLegends" finished-at="2024-08-24T08:51:19 IST" duration-ms="1" status="SKIP">
+          <exception class="org.testng.TestNGException">
             <message>
-              <![CDATA[Title Mismatch expected [Demo Web shop] but found [Demo Web Shop]]]>
+              <![CDATA[
+Parameter 'browser' is required by BeforeMethod on method setBrowser but has not been marked @Optional or defined
+in C:\Users\Lenovo\AppData\Local\Temp\testng-eclipse-1838385650\testng-customsuite.xml]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Title Mismatch expected [Demo Web shop] but found [Demo Web Shop]
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1578)
-at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-at org.testng.Assert.assertEquals(Assert.java:132)
-at org.testng.Assert.assertEquals(Assert.java:656)
-at testScripts.HomePageTest.verifyHomePageTitle(HomePageTest.java:22)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-at org.testng.internal.invokers.TestInvoker.retryFailed(TestInvoker.java:248)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:62)
+              <![CDATA[org.testng.TestNGException: 
+Parameter 'browser' is required by BeforeMethod on method setBrowser but has not been marked @Optional or defined
+in C:\Users\Lenovo\AppData\Local\Temp\testng-eclipse-1838385650\testng-customsuite.xml
+at org.testng.internal.Parameters.createParams(Parameters.java:267)
+at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:355)
+at org.testng.internal.Parameters.createParameters(Parameters.java:684)
+at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:166)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:306)
+at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:810)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:577)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
 at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
 at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
 at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
@@ -126,51 +95,36 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+          </exception> <!-- org.testng.TestNGException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyHomePageTitle -->
-        <test-method is-config="true" signature="closeBrowser(org.testng.ITestResult)[pri:0, instance:testScripts.HomePageTest@3c19aaa5]" started-at="2024-08-19T20:04:39 IST" name="closeBrowser" finished-at="2024-08-19T20:04:39 IST" duration-ms="120" status="PASS">
+        </test-method> <!-- verifyQaLegends -->
+        <test-method is-config="true" signature="closeBrowser(org.testng.ITestResult)[pri:0, instance:org.selenium.testNGcommands.Commands@6f1de4c7]" started-at="2024-08-24T08:51:19 IST" name="closeBrowser" finished-at="2024-08-24T08:51:19 IST" duration-ms="5" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=verifyHomePageTitle status=SKIP method=HomePageTest.verifyHomePageTitle()[pri:0, instance:testScripts.HomePageTest@3c19aaa5] output={null}]]]>
+                <![CDATA[[TestResult name={null} status=CREATED method=Commands.verifyQaLegends()[pri:0, instance:org.selenium.testNGcommands.Commands@6f1de4c7] output={null}]]]>
               </value>
             </param>
           </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closeBrowser -->
-        <test-method is-config="true" signature="setBrowser(java.lang.String)[pri:0, instance:testScripts.HomePageTest@3c19aaa5]" started-at="2024-08-19T20:04:39 IST" name="setBrowser" finished-at="2024-08-19T20:04:40 IST" duration-ms="1085" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Chrome]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setBrowser -->
-        <test-method retried="true" signature="verifyHomePageTitle()[pri:0, instance:testScripts.HomePageTest@3c19aaa5]" started-at="2024-08-19T20:04:40 IST" name="verifyHomePageTitle" finished-at="2024-08-19T20:04:44 IST" duration-ms="3032" status="SKIP">
-          <exception class="java.lang.AssertionError">
+          <exception class="java.lang.NullPointerException">
             <message>
-              <![CDATA[Title Mismatch expected [Demo Web shop] but found [Demo Web Shop]]]>
+              <![CDATA[Cannot invoke "org.openqa.selenium.WebDriver.close()" because "this.driver" is null]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Title Mismatch expected [Demo Web shop] but found [Demo Web Shop]
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1578)
-at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-at org.testng.Assert.assertEquals(Assert.java:132)
-at org.testng.Assert.assertEquals(Assert.java:656)
-at testScripts.HomePageTest.verifyHomePageTitle(HomePageTest.java:22)
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.close()" because "this.driver" is null
+at org.automationcore.Base.closeBrowser(Base.java:46)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-at org.testng.internal.invokers.TestInvoker.retryFailed(TestInvoker.java:248)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:62)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:390)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:325)
+at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:810)
+at org.testng.internal.invokers.TestInvoker.runAfterConfigurations(TestInvoker.java:779)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:600)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
 at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
 at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
 at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
@@ -193,89 +147,11 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyHomePageTitle -->
-        <test-method is-config="true" signature="closeBrowser(org.testng.ITestResult)[pri:0, instance:testScripts.HomePageTest@3c19aaa5]" started-at="2024-08-19T20:04:44 IST" name="closeBrowser" finished-at="2024-08-19T20:04:44 IST" duration-ms="117" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyHomePageTitle status=SKIP method=HomePageTest.verifyHomePageTitle()[pri:0, instance:testScripts.HomePageTest@3c19aaa5] output={null}]]]>
-              </value>
-            </param>
-          </params>
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->
-        <test-method is-config="true" signature="setBrowser(java.lang.String)[pri:0, instance:testScripts.HomePageTest@3c19aaa5]" started-at="2024-08-19T20:04:44 IST" name="setBrowser" finished-at="2024-08-19T20:04:45 IST" duration-ms="1301" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Chrome]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setBrowser -->
-        <test-method signature="verifyHomePageTitle()[pri:0, instance:testScripts.HomePageTest@3c19aaa5]" started-at="2024-08-19T20:04:45 IST" name="verifyHomePageTitle" finished-at="2024-08-19T20:04:48 IST" duration-ms="3261" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[Title Mismatch expected [Demo Web shop] but found [Demo Web Shop]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Title Mismatch expected [Demo Web shop] but found [Demo Web Shop]
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1578)
-at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-at org.testng.Assert.assertEquals(Assert.java:132)
-at org.testng.Assert.assertEquals(Assert.java:656)
-at testScripts.HomePageTest.verifyHomePageTitle(HomePageTest.java:22)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-at org.testng.internal.invokers.TestInvoker.retryFailed(TestInvoker.java:248)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:62)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-at org.testng.TestRunner.privateRun(TestRunner.java:848)
-at org.testng.TestRunner.run(TestRunner.java:621)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
-at org.testng.TestNG.runSuites(TestNG.java:1114)
-at org.testng.TestNG.run(TestNG.java:1082)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyHomePageTitle -->
-        <test-method is-config="true" signature="closeBrowser(org.testng.ITestResult)[pri:0, instance:testScripts.HomePageTest@3c19aaa5]" started-at="2024-08-19T20:04:48 IST" name="closeBrowser" finished-at="2024-08-19T20:04:49 IST" duration-ms="451" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyHomePageTitle status=FAILURE method=HomePageTest.verifyHomePageTitle()[pri:0, instance:testScripts.HomePageTest@3c19aaa5] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closeBrowser -->
-      </class> <!-- testScripts.HomePageTest -->
-    </test> <!-- Test -->
-  </suite> <!-- Suite -->
+      </class> <!-- org.selenium.testNGcommands.Commands -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

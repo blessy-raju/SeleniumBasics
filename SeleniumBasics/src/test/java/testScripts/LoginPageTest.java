@@ -12,7 +12,7 @@ import dataProvider.DataProviders;
 import utilities.ExcelUtility;
 
 public class LoginPageTest extends Base {
-	@Test
+	@Test(groups={"Smoke","Regression"})
 	public void verifyUserLoginWithValidCredentials() {
 		driver.get("https://demowebshop.tricentis.com/");
 		WebElement loginLink = driver.findElement(By.className("ico-login"));

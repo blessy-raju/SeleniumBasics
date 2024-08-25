@@ -6,6 +6,11 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <parameter name="browser" value="Chrome"/>
+    <groups>
+      <run>
+        <include name="Sanity"/>
+      </run>
+    </groups>
     <classes>
       <class name="testScripts.HomePageTest">
         <methods>
