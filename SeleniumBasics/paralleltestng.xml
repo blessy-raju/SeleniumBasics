@@ -11,8 +11,7 @@
 				</methods>
 			</class>
 		</classes>
-	</test> <!--
-	Test -->
+	</test>
 
 	<test name="LoginPageTest">
 		<parameter name="browser" value="Chrome"></parameter>

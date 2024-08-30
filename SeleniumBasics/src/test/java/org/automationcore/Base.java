@@ -37,19 +37,29 @@ public class Base {
 	public void setBrowser(String browserName) {
 		initializeBrowser(browserName);
 	}
-	
+
+//to run single test cases form the test scripts package (comment the above @BeforeMethod and method
+//	@BeforeMethod
+//	public void setBrowser() {
+//		initializeBrowser("Chrome");
+//	}
+
 	@AfterMethod(alwaysRun = true)
 	public void closeBrowser(ITestResult result) throws IOException {
-		if(result.getStatus() == ITestResult.FAILURE) {	//checks the status of the TC with the constant variable ITestResult.FAILURE
+		if (result.getStatus() == ITestResult.FAILURE) { // checks the status of the TC with the constant variable
+															// ITestResult.FAILURE
 			takeScreenshot(result);
 		}
 		driver.close();
 	}
-	
+
 	public void takeScreenshot(ITestResult result) throws IOException {
-		TakesScreenshot takesscreenshot = (TakesScreenshot) driver; //reference of the interface - TakesScreenshot
-		File screenshot = takesscreenshot.getScreenshotAs(OutputType.FILE);	//to get as file
-		FileUtils.copyFile(screenshot, new File("./Screenshots/"+result.getName()+".png"));	//creates folder Screenshots and save file as test case name.png
+		TakesScreenshot takesscreenshot = (TakesScreenshot) driver; // reference of the interface - TakesScreenshot
+		File screenshot = takesscreenshot.getScreenshotAs(OutputType.FILE); // to get as file
+		FileUtils.copyFile(screenshot, new File("./Screenshots/" + result.getName() + ".png")); // creates folder
+																								// Screenshots and save
+																								// file as test case
+																								// name.png
 	}
 
 }
